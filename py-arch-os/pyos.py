@@ -43,10 +43,9 @@ class os_t:
 
         if self.idle_task is None:
             self.panic("could not load idle.bin task")
-
-        self.sched(self.idle_task)
-
-        self.terminal.console_print("this is the console, type the commands here\n")
+        else:
+            self.sched(self.idle_task)
+            self.terminal.console_print("this is the console, type the commands here\n")
 
     def load_task(self, bin_name):
         if not os.path.isfile(bin_name):
@@ -150,7 +149,7 @@ class os_t:
         free_space = (self.addr_free_init + words) - 1 < self.addr_free_max
 
         # Retornar tupla <primeiro endereco livre>, <ultimo endereco livre>
-        if not free_space:
+        if free_space:
             if task.bin_name == "idle.bin":
                 self.addr_free_init += words - 1
                 # Retorna (primeiro endereço livre = 0, último endereço livre = words - 1)
