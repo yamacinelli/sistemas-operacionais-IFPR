@@ -121,7 +121,7 @@ class os_t:
         # Escrever no processador os registradores de proposito geral salvos na task struct
         index_reg = 0
         while index_reg <= pycfg.NREGS - 1:
-            self.cpu.regs[index_reg] = task[index_reg]
+            self.cpu.regs[index_reg] = task.regs[index_reg]
 
         # Escrever no processador o PC salvo na task struct
         self.cpu.reg_pc = task.reg_pc
@@ -129,7 +129,7 @@ class os_t:
         # Atualizar estado do processo
         task.state = PYOS_TASK_STATE_EXECUTING
 
-        # Escrever no processador os registradores que configuram a memória virtual, salvos na task struct
+        # Escrever no processador os registradores que configuram a memoria virtual salvos na task struct
         self.cpu.paddr_offset = task.paddr_offset
         self.cpu.paddr_max = task.paddr_max
 
@@ -152,11 +152,11 @@ class os_t:
         if free_space:
             if task.bin_name == "idle.bin":
                 self.addr_free_init += words - 1
-                # Retorna (primeiro endereço livre = 0, último endereço livre = words - 1)
+                # Retorna (primeiro endereco livre = 0, ultimo endereco livre = words - 1)
                 return 0, words - 1
             else:
                 self.addr_free_init += words
-                # Retorna (primeiro endereço livre = Page Address + 1, último endereço livre = words - 1)
+                # Retorna (primeiro endereco livre = Page Address + 1, ultimo endereco livre = words - 1)
                 return self.addr_free_init + 1, words - 1
         else:
             # if we get here, there is no free space to put the task
