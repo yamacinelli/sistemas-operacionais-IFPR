@@ -274,20 +274,28 @@ class os_t:
         else:
             self.panic("invalid interrupt " + str(interrupt))
 
-    def store_r1_virtual_address(self):
-        # TODO - Store on regs[r1] the virtual address
-        self.printk("store ALGUMA STRING on r1")
-        return
+    def memory_load(self, task, vaddr):
+        if self.check_valid_vaddr(task, vaddr):
+            paddr = self.virtual_to_physical_addr(task, vaddr)
+            return self.memory.read(paddr)
+        else:
+            return self.handle_gpf("invalid virtual address")
 
-    def break_line(self):
+    def get_str_stored(self, task, vaddr):
+        value_str = ""
+        chr_stored = self.memory_load(task, vaddr)
+
+        index_vaddr = vaddr
+        while chr_stored:
+            value_str += chr(chr_stored)
+            index_vaddr += 1
+            chr_stored = self.memory_load(task, vaddr)
+
+        return value_str
+
+    def break_line_app(self):
         # Enter line console
-        self.terminal.console_print("\n")
-        self.printk("\n")
-        return
-
-    def store_r1_int_number(self):
-        # TODO - Store on regs[r1] a integer number
-        self.printk("store ALGUM INTEIRO on r1")
+        self.terminal.app_print("\n")
         return
 
     def syscall(self):
@@ -302,12 +310,13 @@ class os_t:
             self.terminate_unsched_task(task)
             self.sched(self.idle_task)
         elif service == 1:
-            # TODO - Servico de impressao de string
-            self.store_r1_virtual_address()
+            # Servico de impressao de string
+            self.terminal.app_print(self.get_str_stored(task, self.cpu.get_reg(1)))
         elif service == 2:
-            self.break_line()
+            self.break_line_app()
         elif service == 3:
-            # TODO - Servico de impressao de inteiro
-            self.store_r1_int_number()
+            # Servico de impressao de inteiro
+            self.terminal.app_print(str(self.cpu.get_reg(1)))
         else:
             self.handle_gpf("invalid syscall " + str(service))
+        return
