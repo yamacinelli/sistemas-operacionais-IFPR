@@ -233,10 +233,10 @@ class os_t:
         # - registradores de proposito geral
         index_reg = 0
         while index_reg <= pycfg.NREGS - 1:
-            self.cpu.regs = 0
+            task.regs[index_reg] = self.cpu.regs[index_reg]
 
         # - PC
-        self.cpu.reg_pc = 0
+        task.reg_pc = self.cpu.reg_pc
 
         # Atualizar o estado do processo
         task.state = PYOS_TASK_STATE_READY
