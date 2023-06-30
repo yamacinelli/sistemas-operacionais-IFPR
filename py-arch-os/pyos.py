@@ -282,6 +282,7 @@ class os_t:
             return self.handle_gpf("invalid virtual address")
 
     def get_str_stored(self, task, vaddr):
+        # Get string stored in virtual address
         value_str = ""
         chr_stored = self.memory_load(task, vaddr)
 
@@ -297,6 +298,10 @@ class os_t:
         # Enter line console
         self.terminal.app_print("\n")
         return
+
+    def get_int_stored(self, vaddr):
+        # Get integer stored in virtual address
+        return str(self.cpu.get_reg(vaddr))
 
     def syscall(self):
         service = self.cpu.get_reg(0)
@@ -316,7 +321,7 @@ class os_t:
             self.break_line_app()
         elif service == 3:
             # Servico de impressao de inteiro
-            self.terminal.app_print(str(self.cpu.get_reg(1)))
+            self.terminal.app_print(self.get_int_stored(1))
         else:
             self.handle_gpf("invalid syscall " + str(service))
         return
