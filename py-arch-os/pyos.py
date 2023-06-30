@@ -274,18 +274,37 @@ class os_t:
         else:
             self.panic("invalid interrupt " + str(interrupt))
 
+    def store_r1_virtual_address(self):
+        # TODO - Store on regs[r1] the virtual address
+        return
+
+    def break_line(self):
+        # Enter line console
+        self.terminal.console_print("\n")
+        return
+
+    def store_r1_int_number(self):
+        # TODO - Store on regs[r1] a integer number
+        return
+
     def syscall(self):
         service = self.cpu.get_reg(0)
         task = self.current_task
 
+        # TODO
+        # Implementar aqui as outras chamadas de sistema
         if service == 0:
             self.printk("app " + self.current_task.bin_name + " request finish")
             self.un_sched(task)
             self.terminate_unsched_task(task)
             self.sched(self.idle_task)
-
-        # TODO
-        # Implementar aqui as outras chamadas de sistema
-
+        elif service == 1:
+            # TODO - Servico de impressao de string
+            self.store_r1_virtual_address()
+        elif service == 2:
+            self.break_line()
+        elif service == 3:
+            # TODO - Servico de impressao de inteiro
+            self.store_r1_int_number()
         else:
             self.handle_gpf("invalid syscall " + str(service))
