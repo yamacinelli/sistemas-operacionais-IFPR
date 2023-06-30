@@ -276,15 +276,18 @@ class os_t:
 
     def store_r1_virtual_address(self):
         # TODO - Store on regs[r1] the virtual address
+        self.printk("store ALGUMA STRING on r1")
         return
 
     def break_line(self):
         # Enter line console
         self.terminal.console_print("\n")
+        self.printk("\n")
         return
 
     def store_r1_int_number(self):
         # TODO - Store on regs[r1] a integer number
+        self.printk("store ALGUM INTEIRO on r1")
         return
 
     def syscall(self):
