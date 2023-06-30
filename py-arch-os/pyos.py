@@ -231,8 +231,15 @@ class os_t:
         # TODO
         # Salvar na task struct
         # - registradores de proposito geral
+        index_reg = 0
+        while index_reg <= pycfg.NREGS - 1:
+            self.cpu.regs = 0
+
         # - PC
+        self.cpu.reg_pc = 0
+
         # Atualizar o estado do processo
+        task.state = PYOS_TASK_STATE_READY
 
         self.current_task = None
         self.printk("unscheduling task " + task.bin_name)
