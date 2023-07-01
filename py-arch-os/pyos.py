@@ -301,7 +301,8 @@ class os_t:
 
     def get_int_stored(self, vaddr):
         # Get integer stored in virtual address
-        return str(self.cpu.get_reg(vaddr))
+        value_int = self.cpu.get_reg(vaddr)
+        return str(value_int)
 
     def syscall(self):
         service = self.cpu.get_reg(0)
