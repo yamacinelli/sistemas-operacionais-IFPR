@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7b37d7e7-980c-4bed-9c55-93af944d2e86" name="Changes" comment="hotfix">
+      <change beforePath="$PROJECT_DIR$/asm-example/idle.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm-example/perfect-squares.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm-example/print.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm-example/print2.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm-example/test-gpf.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asm-example/teste.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/arch.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/asm-example/count.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/asm-example/idle.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/asm-example/perfect-squares.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/asm-example/print.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/asm-example/print2.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/asm-example/simple-1.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/asm-example/test-gpf.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/asm-example/teste.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/asm.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/asm.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/asm.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/docs/12-instrucoes-codificacao.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/idle.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/lex-token-types.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/lex.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/lex.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/lex.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/linker.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/linker.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/linker.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/mnemonic-i.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/mnemonic-r.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/pasm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/syntax.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/syntax.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assembler/syntax.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/idle.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/print.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/print2.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyarch.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pycfg.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyos.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproc.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pysim.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/simple-1.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-gpf.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/teste.bin" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NhirQYCDfBBsKpA2gkfcCU3xFd" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Workspace/IFPR/Sistemas Operacionais/sistemas-operacionais-IFPR/py-arch-os&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Workspace\IFPR\Sistemas Operacionais\sistemas-operacionais-IFPR\py-arch-os" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Workspace\IFPR\Sistemas Operacionais\py-arch-os" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b37d7e7-980c-4bed-9c55-93af944d2e86" name="Changes" comment="" />
+      <created>1680122914872</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680122914872</updated>
+      <workItem from="1680122916252" duration="4206000" />
+      <workItem from="1680130989755" duration="9136000" />
+      <workItem from="1680222703225" duration="8000" />
+      <workItem from="1680734299283" duration="42000" />
+      <workItem from="1680734343288" duration="1171000" />
+      <workItem from="1680735528044" duration="4000" />
+      <workItem from="1680737192457" duration="1215000" />
+      <workItem from="1680743589839" duration="1440000" />
+      <workItem from="1680836528965" duration="3000" />
+      <workItem from="1681147150149" duration="1555000" />
+      <workItem from="1681339378761" duration="1637000" />
+      <workItem from="1681341280627" duration="2379000" />
+      <workItem from="1681427035982" duration="4000" />
+      <workItem from="1681683779796" duration="245000" />
+      <workItem from="1681684571927" duration="2986000" />
+      <workItem from="1681688316755" duration="8000" />
+      <workItem from="1681949295580" duration="169000" />
+      <workItem from="1682723356455" duration="82000" />
+      <workItem from="1682723445333" duration="67000" />
+      <workItem from="1684970045250" duration="5021000" />
+      <workItem from="1688043634721" duration="3329000" />
+      <workItem from="1688179027432" duration="4436000" />
+      <workItem from="1688226069438" duration="244000" />
+      <workItem from="1688226322600" duration="10000" />
+      <workItem from="1688226527905" duration="357000" />
+      <workItem from="1688231817515" duration="503000" />
+      <workItem from="1688232507608" duration="359000" />
+      <workItem from="1688244652904" duration="2430000" />
+    </task>
+    <task id="LOCAL-00001" summary="hotfix:&#10; - alteracoes de logica.">
+      <created>1688044029374</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1688044029374</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feature:&#10; - add idle.bin.">
+      <created>1688044054163</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1688044054163</updated>
+    </task>
+    <task id="LOCAL-00003" summary="hotfix:&#10; - alocação de registradores ajustado.">
+      <created>1688046924497</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1688046924497</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix:&#10; - lógica função get_int_stored().">
+      <created>1688223165659</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1688223165659</updated>
+    </task>
+    <task id="LOCAL-00005" summary="hotfix">
+      <created>1688232689431</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1688232689431</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="hotfix:&#10; - alteracoes de logica." />
+    <MESSAGE value="feature:&#10; - add idle.bin." />
+    <MESSAGE value="hotfix:&#10; - alocação de registradores ajustado." />
+    <MESSAGE value="fix:&#10; - lógica função get_int_stored()." />
+    <MESSAGE value="hotfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="hotfix" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

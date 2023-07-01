@@ -20,14 +20,33 @@ class task_t:
         self.tid = 0
         self.state = PYOS_TASK_STATE_READY
 
+    def get_reg(self, reg):
+        return self.regs[reg]
+
+    def set_reg(self, reg, value):
+        self.regs[reg] = value
+
+    def get_pc(self):
+        return self.reg_pc
+
+    def set_pc (self, pc):
+        self.reg_pc = pc
+
+    def get_paddr_offset(self):
+        return self.paddr_offset
+
+    def get_paddr_max(self):
+        return self.paddr_max
+
 
 class os_t:
     def __init__(self, cpu, memory, terminal):
         self.cpu = cpu
         self.memory = memory
         self.terminal = terminal
-        self.addr_free_init = 0
-        self.addr_free_max = memory.get_size()
+
+        self.addr_offset_free = 0
+        self.addr_max_free = memory.get_size() - 1
 
         self.terminal.enable_curses()
 
@@ -47,6 +66,18 @@ class os_t:
         self.sched(self.idle_task)
 
         self.terminal.console_print("this is the console, type the commands here\n")
+
+    def get_addr_offset_free(self):
+        return self.addr_offset_free
+
+    def get_addr_max_free(self):
+        return self.addr_max_free
+
+    def set_addr_offset_free(self, addr_offset):
+        self.addr_offset_free = addr_offset
+
+    def set_addr_max_free(self, addr_max):
+        self.addr_max_free = addr_max
 
     def load_task(self, bin_name):
         if not os.path.isfile(bin_name):
@@ -120,19 +151,20 @@ class os_t:
 
         # TODO
         # Escrever no processador os registradores de proposito geral salvos na task struct
-        index_reg = 0
-        while index_reg <= pycfg.NREGS - 1:
-            self.cpu.regs[index_reg] = task.regs[index_reg]
+        i_reg = 0
+        while i_reg < pycfg.NREGS:
+            self.cpu.set_reg(i_reg, task.get_reg(i_reg))
+            i_reg += 1
 
         # Escrever no processador o PC salvo na task struct
-        self.cpu.reg_pc = task.reg_pc
+        self.cpu.set_pc(task.get_pc())
 
         # Atualizar estado do processo
         task.state = PYOS_TASK_STATE_EXECUTING
 
-        # Escrever no processador os registradores que configuram a memoria virtual salvos na task struct
-        self.cpu.paddr_offset = task.paddr_offset
-        self.cpu.paddr_max = task.paddr_max
+        # Escrever no processador os registradores que configuram a memoria virtual, salvos na task struct
+        self.cpu.set_paddr_offset(task.get_paddr_offset())
+        self.cpu.set_paddr_max(task.get_paddr_max())
 
         self.current_task = task
         self.printk("scheduling task " + task.bin_name)
@@ -147,20 +179,17 @@ class os_t:
     def allocate_contiguos_physical_memory_to_task(self, words, task):
         # TODO
         # Localizar um bloco de memoria livre para armazenar o processo
-        free_space = (self.addr_free_init + words) - 1 < self.addr_free_max
+        aux_addr_offset = self.get_addr_offset_free()
+        aux_addr_max = self.get_addr_offset_free() + words
+        free_space = aux_addr_max < self.get_addr_max_free()
 
         # Retornar tupla <primeiro endereco livre>, <ultimo endereco livre>
         if free_space:
-            if task.bin_name == "idle.bin":
-                self.addr_free_init += words - 1
-                # Retorna (primeiro endereco livre = 0, ultimo endereco livre = words - 1)
-                return 0, words - 1
-            else:
-                self.addr_free_init += words
-                # Retorna (primeiro endereco livre = Page Address + 1, ultimo endereco livre = words - 1)
-                return self.addr_free_init + 1, words - 1
+            self.set_addr_offset_free(aux_addr_max + 1)
+            return aux_addr_offset, aux_addr_max
+
+        # if we get here, there is no free space to put the task
         else:
-            # if we get here, there is no free space to put the task
             self.printk("could not allocate memory to task " + task.bin_name)
             return -1, -1
 
@@ -210,6 +239,28 @@ class os_t:
         else:
             self.terminal.console_print("\rinvalid cmd " + cmd + "\n")
 
+    def task_table_print(self):
+        self.terminal.console_print("task table:\n")
+        self.terminal.console_print("id   state   sp   baddr   mem   binary\n")
+
+        tasks = [
+            task for task in [self.current_task, self.the_task, self.idle_task] if task is not None
+        ]
+
+        for task in tasks:
+            marker = " *" if task == self.the_task else ""
+            task_info = "{tid}   {state}   {pc}   {stack}   {offset}   {max}   {bin_name}{marker}\n".format(
+                tid=task.tid,
+                state="EXEC" if task == self.current_task else "READY",
+                pc=task.reg_pc,
+                stack=task.stack,
+                offset=task.paddr_offset,
+                max=task.paddr_max,
+                bin_name=task.bin_name,
+                marker=marker
+            )
+            self.terminal.console_print(task_info)
+
     def terminate_unsched_task(self, task):
         if task.state == PYOS_TASK_STATE_EXECUTING:
             self.panic("impossible to terminate a task that is currently running")
@@ -232,12 +283,13 @@ class os_t:
         # TODO
         # Salvar na task struct
         # - registradores de proposito geral
-        index_reg = 0
-        while index_reg <= pycfg.NREGS - 1:
-            task.regs[index_reg] = self.cpu.regs[index_reg]
+        i_reg = 0
+        while i_reg < pycfg.NREGS:
+            task.set_reg(i_reg, self.cpu.get_reg(i_reg))
+            i_reg += 1
 
         # - PC
-        task.reg_pc = self.cpu.reg_pc
+        task.set_pc(self.cpu.get_pc())
 
         # Atualizar o estado do processo
         task.state = PYOS_TASK_STATE_READY
@@ -287,11 +339,11 @@ class os_t:
         value_str = ""
         chr_stored = self.memory_load(task, vaddr)
 
-        index_vaddr = vaddr
+        i_vaddr = vaddr
         while chr_stored:
             value_str += chr(chr_stored)
-            index_vaddr += 1
-            chr_stored = self.memory_load(task, vaddr)
+            i_vaddr += 1
+            chr_stored = self.memory_load(task, i_vaddr)
 
         return value_str
 
@@ -309,6 +361,12 @@ class os_t:
         service = self.cpu.get_reg(0)
         task = self.current_task
 
+        if service == 0:
+            self.printk("app " + self.current_task.bin_name + " request finish")
+            self.un_sched(task)
+            self.terminate_unsched_task(task)
+            self.sched(self.idle_task)
+
         # TODO
         # Implementar aqui as outras chamadas de sistema
         if service == 0:
@@ -324,6 +382,6 @@ class os_t:
         elif service == 3:
             # Servico de impressao de inteiro
             self.terminal.app_print(self.get_int_stored(1))
+
         else:
             self.handle_gpf("invalid syscall " + str(service))
-        return
