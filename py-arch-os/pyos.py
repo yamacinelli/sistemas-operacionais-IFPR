@@ -43,9 +43,10 @@ class os_t:
 
         if self.idle_task is None:
             self.panic("could not load idle.bin task")
-        else:
-            self.sched(self.idle_task)
-            self.terminal.console_print("this is the console, type the commands here\n")
+
+        self.sched(self.idle_task)
+
+        self.terminal.console_print("this is the console, type the commands here\n")
 
     def load_task(self, bin_name):
         if not os.path.isfile(bin_name):
