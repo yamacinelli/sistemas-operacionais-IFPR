@@ -46,7 +46,7 @@ class os_t:
         self.terminal = terminal
 
         self.addr_offset_free = 0
-        self.addr_max_free = memory.get_size() - 1
+        self.addr_max_free = memory.get_size()
 
         self.terminal.enable_curses()
 
