@@ -180,18 +180,20 @@ class os_t:
         # TODO
         # Localizar um bloco de memoria livre para armazenar o processo
         aux_addr_offset = self.get_addr_offset_free()
-        aux_addr_max = self.get_addr_offset_free() + words
-        free_space = aux_addr_max < self.get_addr_max_free()
+        aux_addr_max = aux_addr_offset + words
 
         # Retornar tupla <primeiro endereco livre>, <ultimo endereco livre>
-        if free_space:
+        if task.bin_name == "idle.bin":
             self.set_addr_offset_free(aux_addr_max + 1)
             return aux_addr_offset, aux_addr_max
+        else:
+            free_space = aux_addr_max < self.get_addr_max_free()
+            if free_space:
+                return aux_addr_offset, aux_addr_max
 
         # if we get here, there is no free space to put the task
-        else:
-            self.printk("could not allocate memory to task " + task.bin_name)
-            return -1, -1
+        self.printk("could not allocate memory to task " + task.bin_name)
+        return -1, -1
 
     def printk(self, msg):
         self.terminal.kernel_print("kernel: " + msg + "\n")
@@ -352,9 +354,9 @@ class os_t:
         self.terminal.app_print("\n")
         return
 
-    def get_int_stored(self, vaddr):
+    def get_int_stored(self, i_reg):
         # Get integer stored in virtual address
-        value_int = self.cpu.get_reg(vaddr)
+        value_int = self.cpu.get_reg(i_reg)
         return str(value_int)
 
     def syscall(self):
